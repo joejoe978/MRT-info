@@ -1,0 +1,14 @@
+mongoimport --db <db-name> --collection <coll-name> --type json --file seed.json
+--jsonArray
+
+mongoimport --db test --collection bike --file YouBike1.json --jsonArray
+
+匯入json檔：
+mongoimport --db MRT --collection Time --file apiIn_2.json --jsonArray
+
+
+找尋指定到站時間： 
+db.Time.find( { "UpdateTime": "2015-12-05T22:57:00.35" } )
+
+路徑：
+Dropbox/ID\ and\ Cloud\ Computing/homework4\(mongoDB\)/test_mongo/

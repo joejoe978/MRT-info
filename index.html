@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang=en>
+  <head>
+  <style>
+html, body {
+    height: 100%;
+}
+body {
+    margin:0px;
+    padding: 0px;
+}
+.wrap {
+    height: auto;
+    margin: 0 auto -80px; /* footer height + space */
+    min-height: 100%;
+    padding: 0 0 80px; /* footer height + space */
+    box-sizing: border-box;
+    overflow: auto;
+}
+.footer {
+    background-color: #111111;
+    /*background-color: #f5f5f5;*/
+    color: #eeeeee;
+    /*border-top: 1px solid red;*/
+    height: 60px;  /* footer height */
+    padding-top: 20px;
+    display: block;
+    margin-top: 20px; /* space between content and footer */
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+}
+  </style>
+
+    <meta charset=utf-8>
+    <!---
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    -->
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name=description content="">
+    <meta name=author content="">
+
+    <title>Taipei MRT Information</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
+    <style>
+        h1.one{
+            margin-left:18px;
+            margin-bottom:20px;
+        }
+    </style>
+  </head>
+<body style="padding-top: 70px">
+<div class="wrap">
+<nav class="navbar navbar-inverse navbar-fixed-top" role=navigation>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="http://localhost:3000/"><big>台北捷運資訊網</big></a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+    <h1 class="one"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> MRT information</h1>
+</div>
+<div class="container-fluid">
+<p>提供臺北捷運文湖線、淡水信義線、松山新店線、中和新蘆線以及板南線之列車進入月台之車站站名、行駛方向等資料。</p>
+<p>若要查看最新列車資訊，點選重新整理即可。</p>
+
+
+<div class="row">
+  <div class="col-md-8">
+      <h3><span class="glyphicon glyphicon-time" aria-hidden="true"></span> 最新到站列車</h3>
+      <table class="table table-hover">
+          <thead>
+            <th>_id</th>
+            <th>站名</th>
+            <th>列車終點站</th>
+            <th>更新時間</th>
+          </thead>
+
+          <tbody id="train">
+          
+          </tbody>
+      </table>
+  </div>  
+
+  <div class="col-md-4">
+      <h3><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>  今日列車到站紀錄</h3>
+      </br>
+      <!--dropdown List -->
+      
+      <h4>文湖線 </h4>
+      <div class="dropdown">
+          <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            請選擇站名<span class="caret"></span></button>
+          <ul class="dropdown-menu" style="top:-300px; left:110px;" role="menu" aria-labelledby="dropdownMenu1" id="dropList"> 
+            <li class="dropdown-header" style="font-size: 16px; color: #996600;">文湖線</li> 
+            <li><a href="#" >動物園</a><li>
+            <li><a href="#" >木柵</a><li> 
+            <li><a href="#" >萬芳社區</a><li> 
+            <li><a href="#" >萬芳醫院</a><li> 
+            <li><a href="#" >辛亥</a><li> 
+            <li><a href="#" >麟光</a><li> 
+            <li><a href="#" >六張犁</a><li> 
+            <li><a href="#" >科技大樓</a><li> 
+            <li><a href="#" >大安</a><li> 
+            <li><a href="#" >忠孝復興</a><li>
+            <li><a href="#" >南京復興</a><li>   
+            <li><a href="#" >中山國中</a><li>   
+            <li><a href="#" >松山機場</a><li>   
+            <li><a href="#" >大直</a><li>   
+            <li><a href="#" >劍南路</a><li>   
+            <li><a href="#" >西湖</a><li>   
+            <li><a href="#" >港墘</a><li>   
+            <li><a href="#" >文德</a><li>   
+            <li><a href="#" >內湖</a><li>   
+            <li><a href="#" >大湖公園</a><li>
+            <li><a href="#" >葫洲</a><li>   
+            <li><a href="#" >東湖</a><li>   
+            <li><a href="#" >南港軟體園區</a><li>   
+            <li><a href="#" >南港展覽館</a><li>         
+          </ul>
+      </div>
+
+      </br>
+      <h4>淡水信義線 </h4>
+      <div class="dropdown">
+          <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            請選擇站名<span class="caret"></span></button>
+          <ul class="dropdown-menu" style="top:-370px; left:110px;" role="menu" aria-labelledby="dropdownMenu1" id="dropList"> 
+            <li class="dropdown-header" style="font-size: 16px; color: red;">淡水信義線</li> 
+            <li><a href="#" >淡水</a><li>
+            <li><a href="#" >紅樹林</a><li>
+            <li><a href="#" >竹圍</a><li> 
+            <li><a href="#" >關渡</a><li> 
+            <li><a href="#" >忠義</a><li> 
+            <li><a href="#" >復興崗</a><li>
+            <li><a href="#" >新北投</a><li> 
+            <li><a href="#" >北投</a><li> 
+            <li><a href="#" >奇岩</a><li> 
+            <li><a href="#" >唭哩岸</a><li> 
+            <li><a href="#" >石牌</a><li> 
+            <li><a href="#" >明德</a><li> 
+            <li><a href="#" >芝山</a><li> 
+            <li><a href="#" >士林</a><li> 
+            <li><a href="#" >劍潭</a><li> 
+            <li><a href="#" >圓山</a><li> 
+            <li><a href="#" >民權西路</a><li> 
+            <li><a href="#" >雙連</a><li> 
+            <li><a href="#" >中山</a><li> 
+            <li><a href="#" >台北車站</a><li> 
+            <li><a href="#" >台大醫院</a><li> 
+            <li><a href="#" >中正紀念堂</a><li> 
+            <li><a href="#" >東門</a><li> 
+            <li><a href="#" >大安森林公園</a><li> 
+            <li><a href="#" >大安</a><li> 
+            <li><a href="#" >信義安和</a><li>  
+            <li><a href="#" >台北101/世貿</a><li>  
+            <li><a href="#" >象山</a><li>    
+          </ul>
+      </div>
+
+      </br>
+      <h4>松山新店線 </h4>
+      <div class="dropdown">
+          <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            請選擇站名<span class="caret"></span></button>
+          <ul class="dropdown-menu" style="top:-250px; left:110px;" role="menu" aria-labelledby="dropdownMenu1" id="dropList">  
+            <li class="dropdown-header" style="font-size: 16px; color: green;">松山新店線</li>
+            <li><a href="#" >松山</a><li>
+            <li><a href="#" >南京三民</a><li>
+            <li><a href="#" >台北小巨蛋</a><li> 
+            <li><a href="#" >南京復興</a><li> 
+            <li><a href="#" >松江南京</a><li> 
+            <li><a href="#" >中山</a><li> 
+            <li><a href="#" >北門</a><li> 
+            <li><a href="#" >西門</a><li> 
+            <li><a href="#" >小南門</a><li> 
+            <li><a href="#" >中正紀念堂</a><li> 
+            <li><a href="#" >古亭</a><li> 
+            <li><a href="#" >台電大樓</a><li> 
+            <li><a href="#" >公館</a><li> 
+            <li><a href="#" >萬隆</a><li>
+            <li><a href="#" >景美</a><li> 
+            <li><a href="#" >大坪林</a><li> 
+            <li><a href="#" >七張</a><li>
+            <li><a href="#" >小碧潭</a><li> 
+            <li><a href="#" >新店區公所</a><li> 
+            <li><a href="#" >新店</a><li> 
+          </ul>
+      </div>
+
+      </br>
+      <h4>中和新蘆線 </h4>
+      <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            請選擇站名<span class="caret"></span></button>
+          <ul class="dropdown-menu" style="top:-350px; left:110px;" role="menu" aria-labelledby="dropdownMenu1" id="dropList">  
+            <li class="dropdown-header" style="font-size: 16px; color: #ff9900;">中和新蘆線</li>
+            <li><a href="#" >南勢角</a><li>
+            <li><a href="#" >景安</a><li> 
+            <li><a href="#" >永安市場</a><li>
+            <li><a href="#" >頂溪</a><li> 
+            <li><a href="#" >古亭</a><li> 
+            <li><a href="#" >東門</a><li> 
+            <li><a href="#" >忠孝新生</a><li> 
+            <li><a href="#" >松江南京</a><li> 
+            <li><a href="#" >行天宮</a><li> 
+            <li><a href="#" >中山國小</a><li>
+            <li><a href="#" >民權西路</a><li> 
+            <li><a href="#" >大橋頭</a><li> 
+            <li><a href="#" >台北橋</a><li> 
+            <li><a href="#" >菜寮</a><li> 
+            <li><a href="#" >三重</a><li> 
+            <li><a href="#" >先嗇宮</a><li> 
+            <li><a href="#" >頭前莊</a><li> 
+            <li><a href="#" >新莊</a><li> 
+            <li><a href="#" >輔大</a><li> 
+            <li><a href="#" >丹鳳</a><li> 
+            <li><a href="#" >迴龍</a><li>
+            <li><a href="#" >三重國小</a><li>
+            <li><a href="#" >三和國中</a><li>
+            <li><a href="#" >徐匯中學</a><li>
+            <li><a href="#" >三民高中</a><li>
+            <li><a href="#" >蘆洲</a><li>
+          </ul>
+      </div>      
+
+      </br>
+      <h4>板南線 </h4>
+      <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            請選擇站名<span class="caret"></span></button>
+          <ul class="dropdown-menu" style="top:-280px; left:110px;" role="menu" aria-labelledby="dropdownMenu1" id="dropList">  
+            <li class="dropdown-header" style="font-size: 16px; color: blue;">板南線</li>
+            <li><a href="#" >頂埔</a><li>
+            <li><a href="#" >永寧</a><li>
+            <li><a href="#" >土城</a><li> 
+            <li><a href="#" >海山</a><li> 
+            <li><a href="#" >亞東醫院</a><li> 
+            <li><a href="#" >府中</a><li> 
+            <li><a href="#" >板橋</a><li> 
+            <li><a href="#" >新埔</a><li> 
+            <li><a href="#" >江子翠</a><li> 
+            <li><a href="#" >龍山寺</a><li> 
+            <li><a href="#" >西門</a><li> 
+            <li><a href="#" >台北車站</a><li> 
+            <li><a href="#" >善導寺</a><li> 
+            <li><a href="#" >忠孝新生</a><li> 
+            <li><a href="#" >忠孝復興</a><li> 
+            <li><a href="#" >忠孝敦化</a><li> 
+            <li><a href="#" >國父紀念館</a><li> 
+            <li><a href="#" >市政府</a><li> 
+            <li><a href="#" >永春</a><li> 
+            <li><a href="#" >後山埤</a><li> 
+            <li><a href="#" >昆陽</a><li> 
+            <li><a href="#" >南港</a><li>  
+            <li><a href="#" >南港展覽館</a><li>   
+          </ul>
+      </div>
+
+      <!-- Modal -->
+      <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" id="modalTitle">今日列車到站紀錄</h4>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <table class="table table-hover">
+                  <thead>
+                    <th>列車編號</th>
+                    <th>列車終點站</th>
+                    <th>更新時間</th>
+                  </thead>
+
+                  <tbody id="trainModal">
+                  
+                  </tbody>
+                </table>
+            </div>
+            <div class="modal-footer" id="exit-modal">
+               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> 
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+  </div>
+</div>
+
+
+</div>
+</div>
+<footer class="footer"><div class="container text-center footer-fixed-bottom">
+      <p class=text-muted>Support by : Bootstrap3&nbsp;&nbsp;&nbsp;&nbsp;Node.js&nbsp;&nbsp;&nbsp; MongoDB &nbsp;&nbsp;&nbsp;
+        Author : 黃子軒 &nbsp;(r03922133@ntu.edu.tw) </p>
+    </div></footer>
+</body>
+
+<script>
+
+$(document).ready(function(req,res) {
+      $.ajax({
+         url:'/loadindex',type:'post',
+         success:function(response){
+            table = response; 
+            $("#train").empty();
+            var parentElement = document.getElementById('train');
+            var no = 1;
+            for(var x in table){
+                var tr = document.createElement('tr');
+
+                var td1 = document.createElement('td');
+                td1.appendChild(document.createTextNode(no));
+
+                var td2 = document.createElement('td');
+                td2.appendChild(document.createTextNode(table[x].Station));
+
+                var td3 = document.createElement('td');
+                td3.appendChild(document.createTextNode(table[x].Destination));
+
+                var td4 = document.createElement('td');
+                var time = table[x].UpdateTime; 
+                time = time.replace("T"," ");
+                td4.appendChild(document.createTextNode(time));
+
+                tr.appendChild(td1); tr.appendChild(td2); tr.appendChild(td3);
+                tr.appendChild(td4); parentElement.appendChild(tr);
+                no = no + 1 ;
+            }
+         },
+         error:function(){
+            console.log("error!");
+         },
+      });
+
+      $('#dropList li').on('click', function(){
+          var recordMRT = $(this).text();
+          if(recordMRT == '文湖線' || recordMRT == '淡水信義線' || recordMRT == '松山新店線' || recordMRT == '中和新蘆線' || recordMRT == '板南線'){
+              return ;
+          }
+          $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');  
+
+          if(recordMRT != '台北車站'){
+              recordMRT = recordMRT + '站' ;
+          }
+          console.log("recordMRT: " + recordMRT);
+          $.ajax({
+              url:'/getdata',type:'post', 
+              data: {station:recordMRT},
+
+              success:function(response){
+                  if(response == 'None'){
+                      $("#modalTitle").html("");
+                      $("#modalTitle").html(recordMRT + ' 今日紀錄');
+                      $("#trainModal").html("今日尚無此捷運站之紀錄！");
+                      $("#myModal").modal();
+                  }
+                  else{
+                      var dest = response[0]; var time = response[1];  
+                      //console.log(response);
+                      $("#modalTitle").html("");
+                      $("#modalTitle").html(recordMRT + ' 今日紀錄');
+                      $("#trainModal").html("");
+                      
+                      var parentElement = document.getElementById('trainModal');
+
+                      var no = 1;
+                      for(var x in dest){
+                          var tr = document.createElement('tr');
+
+                          var td1 = document.createElement('td');
+                          td1.appendChild(document.createTextNode(no));
+
+                          var td2 = document.createElement('td');
+                          td2.appendChild(document.createTextNode(dest[x]));
+
+                          var td3 = document.createElement('td'); 
+                          var newtime = time[x].replace("T"," ");
+                          td3.appendChild(document.createTextNode(newtime));
+
+                          tr.appendChild(td1); tr.appendChild(td2); tr.appendChild(td3);
+                          parentElement.appendChild(tr);
+                          no = no + 1 ;
+                      }
+
+                      $("#myModal").modal();
+                    }
+              },
+              error:function(){
+                  console.log("error!");
+              },
+         });
+      });
+});
+</script>
+
+</html>
